@@ -1,0 +1,43 @@
+---
+import RetainPulseCard from './RetainPulseCard.astro';
+import ProductCard from './ProductCard.astro';
+---
+
+<section class="products">
+  <div class="container">
+    <RetainPulseCard />
+    <div class="product-grid">
+      <ProductCard
+        title="Foxry Vault — CF7 Submission Storage"
+        description="Never lose a Contact Form 7 submission again. Auto-save every entry to your database with GDPR-ready auto-deletion, CSV export, and a dashboard widget."
+        price="Free & open source"
+        ctaText="View on WordPress.org →"
+        ctaHref="https://wordpress.org/plugins/foxry-vault/"
+      />
+      <ProductCard
+        title="StockClock — Stockout Predictor"
+        description="Know when you'll run out of stock — before it happens. Predicts stockout dates from sales velocity and sends alerts via email and Slack."
+        badge="Coming to Shopify App Store soon"
+      />
+    </div>
+  </div>
+</section>
+
+<style>
+  .products {
+    padding-bottom: var(--section-py);
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .product-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

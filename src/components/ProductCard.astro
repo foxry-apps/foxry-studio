@@ -1,0 +1,95 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  price?: string;
+  ctaText?: string;
+  ctaHref?: string;
+  badge?: string;
+}
+
+const { title, description, price, ctaText, ctaHref, badge } = Astro.props;
+---
+
+<article class="card fade-in">
+  <h3 class="card-title">{title}</h3>
+  <p class="card-desc">{description}</p>
+  {price && <p class="price">{price}</p>}
+  {ctaHref && ctaText && (
+    <a
+      href={ctaHref}
+      class="cta"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      {ctaText}
+    </a>
+  )}
+  {badge && <span class="badge">{badge}</span>}
+</article>
+
+<style>
+  .card {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  }
+
+  .card-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .card-desc {
+    margin-top: 0.75rem;
+    color: var(--color-subtext);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  .price {
+    margin-top: 1rem;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-accent);
+  }
+
+  .cta {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  .cta:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .badge {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.5rem 1rem;
+    min-height: 44px;
+    background: rgba(232, 96, 28, 0.08);
+    color: var(--color-accent);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
+    line-height: 1.7;
+  }
+</style>

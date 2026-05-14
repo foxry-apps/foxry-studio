@@ -1,0 +1,62 @@
+<header class="header">
+  <nav class="container">
+    <img src="/images/foxry-logo.png" alt="Foxry" class="logo" />
+  </nav>
+</header>
+
+<section class="hero">
+  <div class="container">
+    <h1 class="hero-title">Affordable tools for Shopify merchants</h1>
+    <p class="hero-subtitle">
+      We build the features you need — without the enterprise price tag.
+    </p>
+  </div>
+</section>
+
+<style>
+  .header {
+    background-color: var(--color-white);
+    padding: 1.25rem 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .logo {
+    height: 2rem;
+    width: auto;
+  }
+
+  .hero {
+    padding: clamp(3.5rem, 8vw, 6rem) 0;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.2s forwards;
+  }
+
+  .hero-subtitle {
+    margin-top: 1.25rem;
+    font-size: clamp(1rem, 2vw, 1.25rem);
+    color: var(--color-subtext);
+    max-width: 540px;
+    margin-inline: auto;
+    opacity: 0;
+    animation: fadeUp 0.8s ease-out 0.5s forwards;
+  }
+
+  @keyframes fadeUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>

@@ -1,11 +1,9 @@
 ---
-import RetainPulseCard from './RetainPulseCard.astro';
 import ProductCard from './ProductCard.astro';
 ---
 
-<section class="products">
+<section class="products fade-in">
   <div class="container">
-    <RetainPulseCard />
     <div class="product-grid">
       <ProductCard
         title="Foxry Vault — CF7 Submission Storage"
@@ -32,7 +30,6 @@ import ProductCard from './ProductCard.astro';
     display: grid;
     grid-template-columns: 1fr;
     gap: 1.5rem;
-    margin-top: 1.5rem;
   }
 
   @media (min-width: 640px) {

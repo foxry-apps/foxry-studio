@@ -1,0 +1,138 @@
+---
+import ss1 from '../assets/images/retainpulse-ss-1.png';
+import ss2 from '../assets/images/retainpulse-ss-2.png';
+import ss3 from '../assets/images/retainpulse-ss-3.png';
+import ss4 from '../assets/images/retainpulse-ss-4.png';
+import ss5 from '../assets/images/retainpulse-ss-5.png';
+
+const slides = [
+  { img: ss1, alt: 'Customer health dashboard with segment distribution' },
+  { img: ss2, alt: 'Segment grid with key metrics and trend charts' },
+  { img: ss3, alt: 'Cohort retention analysis table' },
+  { img: ss4, alt: 'Customer list with segment tags and export' },
+  { img: ss5, alt: 'Segment focus page with action guides' },
+];
+---
+
+<div class="browser-frame">
+  <div class="browser-bar" aria-hidden="true">
+    <span class="dot dot-red"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-green"></span>
+  </div>
+  <div class="slideshow" data-slideshow>
+    <div class="slides">
+      {slides.map((s) => (
+        <img src={s.img.src} alt={s.alt} width={s.img.width} height={s.img.height} loading="lazy" />
+      ))}
+    </div>
+    <button class="arrow arrow-prev" data-prev aria-label="Previous screenshot">&lsaquo;</button>
+    <button class="arrow arrow-next" data-next aria-label="Next screenshot">&rsaquo;</button>
+  </div>
+  <div class="dots" data-dots>
+    {slides.map((_, i) => (
+      <button class:list={['dot-nav', { active: i === 0 }]} data-index={i} aria-label={`Slide ${i + 1}`} />
+    ))}
+  </div>
+</div>
+
+<style>
+  .browser-frame {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: var(--color-white);
+  }
+
+  .browser-bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #F8F7F5;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red { background: #FF5F56; }
+  .dot-yellow { background: #FFBD2E; }
+  .dot-green { background: #27C93F; }
+
+  .slideshow { position: relative; overflow: hidden; }
+
+  .slides {
+    display: flex;
+    transition: transform 0.45s ease;
+  }
+
+  .slides img { min-width: 100%; display: block; }
+
+  .arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 36px;
+    height: 36px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.85);
+    color: var(--color-text);
+    font-size: 1.25rem;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .slideshow:hover .arrow { opacity: 1; }
+  .arrow-prev { left: 8px; }
+  .arrow-next { right: 8px; }
+  .arrow:hover { background: rgba(255, 255, 255, 1); }
+
+  .dots {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 10px 0;
+  }
+
+  .dot-nav {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    border: none;
+    background: var(--color-border);
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.2s ease;
+  }
+
+  .dot-nav.active { background: var(--color-accent); }
+</style>
+
+<script>
+  const el = document.querySelector('[data-slideshow]') as HTMLElement;
+  const track = el.querySelector('.slides') as HTMLElement;
+  const total = track.children.length;
+  const dots = document.querySelectorAll('[data-dots] .dot-nav');
+  let current = 0;
+  let timer: ReturnType<typeof setInterval>;
+
+  function goTo(i: number) {
+    current = ((i % total) + total) % total;
+    track.style.transform = `translateX(-${current * 100}%)`;
+    dots.forEach((d, idx) => d.classList.toggle('active', idx === current));
+  }
+
+  function resetTimer() {
+    clearInterval(timer);
+    timer = setInterval(() => goTo(current + 1), 5000);
+  }
+
+  el.querySelector('[data-prev]')!.addEventListener('click', () => { goTo(current - 1); resetTimer(); });
+  el.querySelector('[data-next]')!.addEventListener('click', () => { goTo(current + 1); resetTimer(); });
+  dots.forEach((d) => d.addEventListener('click', () => { goTo(Number((d as HTMLElement).dataset.index)); resetTimer(); }));
+  resetTimer();
+</script>

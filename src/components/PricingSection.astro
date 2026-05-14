@@ -1,0 +1,133 @@
+<section class="pricing fade-in">
+  <div class="container">
+    <h2 class="pricing-title">Simple, transparent pricing</h2>
+    <div class="pricing-grid">
+      <article class="plan">
+        <h3 class="plan-name">Free</h3>
+        <ul class="plan-features">
+          <li>Up to 50 customers</li>
+          <li>Health dashboard</li>
+          <li>8 customer segments</li>
+          <li>Cohort analysis</li>
+        </ul>
+        <a href="https://apps.shopify.com/retainpulse" class="plan-cta" target="_blank" rel="noopener noreferrer">
+          Install Free →
+        </a>
+      </article>
+      <article class="plan plan-highlighted">
+        <span class="plan-badge">Recommended</span>
+        <h3 class="plan-name">Pro</h3>
+        <p class="plan-price">$29<span class="plan-period">/mo</span></p>
+        <ul class="plan-features">
+          <li>Unlimited customers</li>
+          <li>Everything in Free</li>
+          <li>Customer list &amp; CSV export</li>
+          <li>Email &amp; Slack notifications</li>
+          <li>Segment action guides</li>
+        </ul>
+        <a href="https://apps.shopify.com/retainpulse" class="plan-cta plan-cta-primary" target="_blank" rel="noopener noreferrer">
+          Start Free Trial →
+        </a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pricing { padding: var(--section-py) 0; }
+
+  .pricing-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .pricing-grid {
+    display: grid;
+    gap: 1.5rem;
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 640px) {
+    .pricing-grid { grid-template-columns: 1fr 1fr; }
+  }
+
+  .plan {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 2rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .plan-highlighted { border: 2px solid var(--color-accent); }
+
+  .plan-badge {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--color-accent);
+    color: var(--color-white);
+    padding: 0.25rem 1rem;
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 600;
+    white-space: nowrap;
+  }
+
+  .plan-name { font-size: 1.25rem; font-weight: 600; }
+
+  .plan-price { font-size: 2.5rem; font-weight: 600; margin-top: 0.5rem; }
+
+  .plan-period { font-size: 1rem; font-weight: 400; color: var(--color-subtext); }
+
+  .plan-features {
+    list-style: none;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.625rem;
+    font-size: 0.9375rem;
+    color: var(--color-subtext);
+    flex-grow: 1;
+  }
+
+  .plan-features li::before {
+    content: "\2713\00a0";
+    color: var(--color-accent);
+    font-weight: 600;
+  }
+
+  .plan-cta {
+    display: block;
+    text-align: center;
+    margin-top: 1.5rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
+  }
+
+  .plan-cta:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+  .plan-cta-primary {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-color: var(--color-accent);
+  }
+
+  .plan-cta-primary:hover {
+    background: var(--color-accent-hover);
+    border-color: var(--color-accent-hover);
+    color: var(--color-white);
+  }
+</style>

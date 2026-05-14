@@ -1,0 +1,38 @@
+<div class="browser-frame">
+  <div class="browser-bar" aria-hidden="true">
+    <span class="dot dot-red"></span>
+    <span class="dot dot-yellow"></span>
+    <span class="dot dot-green"></span>
+  </div>
+  <div class="browser-content">
+    <slot />
+  </div>
+</div>
+
+<style>
+  .browser-frame {
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    background: var(--color-white);
+  }
+
+  .browser-bar {
+    display: flex;
+    gap: 6px;
+    padding: 10px 14px;
+    background: #F8F7F5;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .dot { width: 10px; height: 10px; border-radius: 50%; }
+  .dot-red { background: #FF5F56; }
+  .dot-yellow { background: #FFBD2E; }
+  .dot-green { background: #27C93F; }
+
+  .browser-content :global(img) {
+    width: 100%;
+    display: block;
+  }
+</style>

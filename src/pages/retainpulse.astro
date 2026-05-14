@@ -1,0 +1,153 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import BrowserFrame from '../components/BrowserFrame.astro';
+import FeatureBlock from '../components/FeatureBlock.astro';
+import PricingSection from '../components/PricingSection.astro';
+import CtaBanner from '../components/CtaBanner.astro';
+import ProductCard from '../components/ProductCard.astro';
+import Footer from '../components/Footer.astro';
+
+import promo from '../assets/images/retainpulse-screenshot.png';
+import ss1 from '../assets/images/retainpulse-ss-1.png';
+import ss2 from '../assets/images/retainpulse-ss-2.png';
+import ss3 from '../assets/images/retainpulse-ss-3.png';
+import ss4 from '../assets/images/retainpulse-ss-4.png';
+import ss5 from '../assets/images/retainpulse-ss-5.png';
+import ss6 from '../assets/images/retainpulse-ss-6.png';
+
+const features = [
+  {
+    image: ss1, reverse: false,
+    title: "See your store's health at a glance",
+    description: "Eight key metrics — from total customers and active rate to average order value and LTV — give you a complete picture of your store. Track segment movements over 1, 7, and 30 days to catch shifts before they become problems.",
+  },
+  {
+    image: ss2, reverse: true,
+    title: "Know exactly where every customer stands",
+    description: "Your customer base split into 8 clear segments — Champions, Loyal, Potential Loyalists, New, Needs Attention, At Risk, Can't Lose Them, and Dormant. See the composition at a glance and jump to any segment's customer list with one click.",
+  },
+  {
+    image: ss3, reverse: false,
+    title: "Track what matters over time",
+    description: "Monitor average order value, customer LTV, and repeat purchase rate with 6-month trend charts. Spot growth patterns and catch dips early — all on a single dashboard.",
+  },
+  {
+    image: ss4, reverse: true,
+    title: "Measure retention, month by month",
+    description: "Cohort retention analysis shows exactly when customers drop off. Compare monthly cohorts side by side to see whether your retention is improving or needs work.",
+  },
+  {
+    image: ss5, reverse: false,
+    title: "Dive into individual customers",
+    description: "Filter by any segment, sort by last order date or order count, and export to CSV. Every customer row links directly to their Shopify profile.",
+  },
+  {
+    image: ss6, reverse: true,
+    title: "Set up in minutes",
+    description: "Choose your store type for industry-adjusted benchmarks, enable email and Slack notifications, and you're done. No complex configuration, no onboarding calls.",
+  },
+];
+---
+
+<Layout
+  title="RetainPulse — Customer Segment Insights | Foxry"
+  description="Spot loyal, at-risk, and dormant customers with industry-adjusted RFM benchmarks."
+>
+  <Header />
+  <main>
+    <section class="rp-hero">
+      <div class="container rp-hero-grid">
+        <div class="rp-hero-body fade-in">
+          <h1 class="rp-hero-title">RetainPulse — Customer Segment Insights</h1>
+          <p class="rp-hero-desc">
+            Spot loyal, at-risk, and dormant customers with industry-adjusted RFM benchmarks.
+            Know who to nurture, who to win back, and who's already gone.
+          </p>
+          <p class="rp-hero-price">Free plan available · Pro at $29/mo</p>
+          <a href="https://apps.shopify.com/retainpulse" class="rp-cta" target="_blank" rel="noopener noreferrer">
+            View on Shopify App Store →
+          </a>
+        </div>
+        <div class="rp-hero-media fade-in">
+          <BrowserFrame>
+            <img src={promo.src} alt="RetainPulse — 8 customer segments with health metrics" width={promo.width} height={promo.height} />
+          </BrowserFrame>
+        </div>
+      </div>
+    </section>
+    {features.map((f) => <FeatureBlock image={f.image} title={f.title} description={f.description} reverse={f.reverse} />)}
+    <PricingSection />
+    <CtaBanner />
+    <section class="other-apps fade-in">
+      <div class="container">
+        <h2 class="other-apps-title">Explore our other tools</h2>
+        <div class="other-apps-grid">
+          <ProductCard
+            title="Foxry Vault — CF7 Submission Storage"
+            description="Never lose a Contact Form 7 submission again. Auto-save every entry to your database with GDPR-ready auto-deletion, CSV export, and a dashboard widget."
+            price="Free & open source"
+            ctaText="View on WordPress.org →"
+            ctaHref="https://wordpress.org/plugins/foxry-vault/"
+          />
+          <ProductCard
+            title="StockClock — Stockout Predictor"
+            description="Know when you'll run out of stock — before it happens. Predicts stockout dates from sales velocity and sends alerts via email and Slack."
+            badge="Coming to Shopify App Store soon"
+          />
+        </div>
+      </div>
+    </section>
+  </main>
+  <Footer />
+</Layout>
+
+<style>
+  .rp-hero { padding: clamp(3rem, 6vw, 5rem) 0; }
+  .rp-hero-grid { display: grid; gap: 2.5rem; }
+
+  @media (min-width: 768px) {
+    .rp-hero-grid { grid-template-columns: 5fr 7fr; align-items: center; }
+  }
+
+  .rp-hero-title {
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+  }
+
+  .rp-hero-desc { margin-top: 1rem; color: var(--color-subtext); line-height: 1.7; }
+  .rp-hero-price { margin-top: 1.5rem; font-weight: 600; color: var(--color-accent); }
+
+  .rp-cta {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  .rp-cta:hover { background: var(--color-accent-hover); }
+
+  .other-apps { padding: var(--section-py) 0; }
+
+  .other-apps-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .other-apps-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+
+  @media (min-width: 640px) {
+    .other-apps-grid { grid-template-columns: 1fr 1fr; }
+  }
+</style>

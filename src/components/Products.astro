@@ -1,10 +1,32 @@
 ---
 import ProductCard from './ProductCard.astro';
+import BrowserFrame from './BrowserFrame.astro';
+import screenshot from '../assets/images/retainpulse-screenshot.png';
 ---
 
-<section class="products fade-in">
+<section class="products">
   <div class="container">
-    <div class="product-grid">
+    <article class="featured fade-in">
+      <div class="featured-body">
+        <h3 class="featured-title">RetainPulse — Customer Segment Insights</h3>
+        <p class="featured-desc">
+          Spot loyal, at-risk, and dormant customers with industry-adjusted RFM benchmarks.
+        </p>
+        <a href="/retainpulse" class="featured-cta">Learn more →</a>
+      </div>
+      <div class="featured-media">
+        <BrowserFrame>
+          <img
+            src={screenshot.src}
+            alt="RetainPulse dashboard"
+            width={screenshot.width}
+            height={screenshot.height}
+            loading="lazy"
+          />
+        </BrowserFrame>
+      </div>
+    </article>
+    <div class="product-grid fade-in">
       <ProductCard
         title="Foxry Vault — CF7 Submission Storage"
         description="Never lose a Contact Form 7 submission again. Auto-save every entry to your database with GDPR-ready auto-deletion, CSV export, and a dashboard widget."
@@ -22,19 +44,59 @@ import ProductCard from './ProductCard.astro';
 </section>
 
 <style>
-  .products {
-    padding-bottom: var(--section-py);
+  .products { padding-bottom: var(--section-py); }
+
+  .featured {
+    background: var(--color-white);
+    border-radius: 12px;
+    padding: 2rem;
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
   }
 
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
+  .featured:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
   }
+
+  @media (min-width: 768px) {
+    .featured { grid-template-columns: 5fr 7fr; align-items: center; }
+  }
+
+  .featured-title {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 600;
+    line-height: 1.3;
+  }
+
+  .featured-desc {
+    margin-top: 0.75rem;
+    color: var(--color-subtext);
+    line-height: 1.7;
+  }
+
+  .featured-cta {
+    display: inline-block;
+    margin-top: 1.25rem;
+    padding: 0.75rem 1.5rem;
+    min-height: 44px;
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: background 0.2s ease;
+    cursor: pointer;
+  }
+
+  .featured-cta:hover { background: var(--color-accent-hover); }
+
+  .product-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
 
   @media (min-width: 640px) {
-    .product-grid {
-      grid-template-columns: 1fr 1fr;
-    }
+    .product-grid { grid-template-columns: 1fr 1fr; }
   }
 </style>

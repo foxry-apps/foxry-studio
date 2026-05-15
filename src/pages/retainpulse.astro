@@ -1,14 +1,13 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
-import BrowserFrame from '../components/BrowserFrame.astro';
 import FeatureBlock from '../components/FeatureBlock.astro';
 import PricingSection from '../components/PricingSection.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Footer from '../components/Footer.astro';
 
-import promo from '../assets/images/retainpulse-screenshot.png';
+import appIcon from '../assets/images/csi-app-icon.png';
 import ss1 from '../assets/images/retainpulse-ss-1.png';
 import ss2 from '../assets/images/retainpulse-ss-2.png';
 import ss3 from '../assets/images/retainpulse-ss-3.png';
@@ -70,9 +69,7 @@ const features = [
           </a>
         </div>
         <div class="rp-hero-media fade-in">
-          <BrowserFrame>
-            <img src={promo.src} alt="RetainPulse — 8 customer segments with health metrics" width={promo.width} height={promo.height} />
-          </BrowserFrame>
+          <img src={appIcon.src} alt="RetainPulse app icon" width={appIcon.width} height={appIcon.height} class="rp-app-icon" />
         </div>
       </div>
     </section>
@@ -135,6 +132,16 @@ const features = [
   }
 
   .rp-cta:hover { background: var(--color-accent-hover); }
+
+  .rp-hero-media { display: flex; justify-content: center; }
+
+  .rp-app-icon {
+    max-width: 280px;
+    width: 100%;
+    height: auto;
+    border-radius: 22%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
 
   .other-apps { padding: var(--section-py) 0; }
 

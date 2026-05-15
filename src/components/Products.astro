@@ -1,7 +1,6 @@
 ---
 import ProductCard from './ProductCard.astro';
-import BrowserFrame from './BrowserFrame.astro';
-import screenshot from '../assets/images/retainpulse-screenshot.png';
+import featureImage from '../assets/images/01_feature_image.png';
 ---
 
 <section class="products">
@@ -15,15 +14,14 @@ import screenshot from '../assets/images/retainpulse-screenshot.png';
         <a href="/retainpulse" class="featured-cta">Learn more →</a>
       </div>
       <div class="featured-media">
-        <BrowserFrame>
-          <img
-            src={screenshot.src}
-            alt="RetainPulse dashboard"
-            width={screenshot.width}
-            height={screenshot.height}
-            loading="lazy"
-          />
-        </BrowserFrame>
+        <img
+          src={featureImage.src}
+          alt="RetainPulse dashboard"
+          width={featureImage.width}
+          height={featureImage.height}
+          loading="lazy"
+          class="featured-img"
+        />
       </div>
     </article>
     <div class="product-grid fade-in">

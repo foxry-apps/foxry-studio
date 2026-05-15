@@ -1,39 +1,124 @@
+---
+import featureImage from '../assets/images/01_feature_image.png';
+---
+
 <section class="hero">
-  <div class="container">
-    <h1 class="hero-title">Affordable tools for Shopify merchants</h1>
-    <p class="hero-subtitle">
-      We build the features you need — without the enterprise price tag.
-    </p>
+  <div class="container hero-grid">
+    <div class="hero-body">
+      <h1 class="hero-title">
+        Smarter tools for<br />Shopify merchants
+      </h1>
+      <p class="hero-subtitle">
+        Customer insights and inventory intelligence — built to be powerful, priced to be fair.
+      </p>
+      <div class="hero-actions">
+        <a href="/retainpulse" class="hero-cta hero-cta--primary">Explore RetainPulse</a>
+        <a href="#stockclock" class="hero-cta hero-cta--secondary">StockClock — Coming Soon</a>
+      </div>
+    </div>
+    <div class="hero-media">
+      <img
+        src={featureImage.src}
+        alt="RetainPulse dashboard showing customer segments"
+        width={featureImage.width}
+        height={featureImage.height}
+        class="hero-image"
+      />
+    </div>
   </div>
 </section>
 
 <style>
   .hero {
-    padding: clamp(3.5rem, 8vw, 6rem) 0;
-    text-align: center;
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 4rem);
+  }
+
+  .hero-grid {
+    display: grid;
+    gap: var(--space-2xl);
+    align-items: center;
+  }
+
+  @media (min-width: 768px) {
+    .hero-grid {
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-3xl);
+    }
+  }
+
+  .hero-body {
+    opacity: 0;
+    animation: heroIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
   }
 
   .hero-title {
-    font-size: clamp(2rem, 5vw, 3.25rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.2s forwards;
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 5.5vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
   }
 
   .hero-subtitle {
-    margin-top: 1.25rem;
-    font-size: clamp(1rem, 2vw, 1.25rem);
+    margin-top: var(--space-lg);
+    font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
     color: var(--color-subtext);
-    max-width: 540px;
-    margin-inline: auto;
-    opacity: 0;
-    animation: fadeUp 0.8s ease-out 0.5s forwards;
+    line-height: 1.6;
+    max-width: 480px;
   }
 
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
+  .hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .hero-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.875rem 1.75rem;
+    min-height: 48px;
+    border-radius: 8px;
+    font-family: var(--font-body);
+    font-weight: 600;
+    font-size: 0.9375rem;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+
+  .hero-cta--primary {
+    background: var(--color-accent);
+    color: var(--color-surface);
+  }
+
+  .hero-cta--primary:hover {
+    background: var(--color-accent-hover);
+  }
+
+  .hero-cta--secondary {
+    background: transparent;
+    color: var(--color-text);
+    border: 1.5px solid var(--color-border);
+  }
+
+  .hero-cta--secondary:hover {
+    border-color: var(--color-subtext);
+  }
+
+  .hero-media {
+    opacity: 0;
+    animation: heroIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+  }
+
+  .hero-image {
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(31, 26, 20, 0.08);
+  }
+
+  @keyframes heroIn {
+    from { opacity: 0; transform: translateY(16px); }
     to { opacity: 1; transform: translateY(0); }
   }
 </style>

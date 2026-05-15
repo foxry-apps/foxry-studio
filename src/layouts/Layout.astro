@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = 'Foxry — Affordable Tools for Shopify Merchants',
-  description = 'Practical apps for online merchants. Powerful features, reasonable pricing.',
+  title = 'Foxry — Smarter Tools for Shopify Merchants',
+  description = 'Focused apps that help you understand your customers and manage your inventory. Powerful features, honest pricing.',
 } = Astro.props;
 ---
 
@@ -22,19 +22,18 @@ const {
     <title>{title}</title>
     <meta name="description" content={description} />
 
-    <meta property="og:title" content="Foxry — Affordable Tools for Shopify Merchants" />
-    <meta property="og:description" content="Practical apps for online merchants. Powerful features, reasonable pricing." />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://foxry-studio.pages.dev" />
-    <!-- TODO: og:image を追加 -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Foxry — Affordable Tools for Shopify Merchants" />
-    <meta name="twitter:description" content="Practical apps for online merchants. Powerful features, reasonable pricing." />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Figtree:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
   </head>
@@ -50,7 +49,7 @@ const {
             }
           });
         },
-        { threshold: 0.15 },
+        { threshold: 0.1 },
       );
       document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
     </script>

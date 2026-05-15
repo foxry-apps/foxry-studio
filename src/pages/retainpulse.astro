@@ -56,18 +56,18 @@ const faqs = [
   },
   {
     question: "How are the 8 customer segments defined?",
-    answer: "Segments are automatically assigned based on each customer’s RFM score. The thresholds adapt to your store type — a furniture store and a consumables store have very different buying cycles, and RetainPulse accounts for that.",
+    answer: "Segments are automatically assigned based on each customer's RFM score. The thresholds adapt to your store type — a furniture store and a consumables store have very different buying cycles, and RetainPulse accounts for that.",
   },
   {
     question: 'What does "industry-adjusted" mean?',
-    answer: "Different industries have different purchase patterns. A customer who buys once a year might be loyal for a furniture store but dormant for a grocery store. When you select your Store Type, RetainPulse applies benchmarks calibrated to your industry’s typical buying cycle.",
+    answer: "Different industries have different purchase patterns. A customer who buys once a year might be loyal for a furniture store but dormant for a grocery store. When you select your Store Type, RetainPulse applies benchmarks calibrated to your industry's typical buying cycle.",
   },
   {
     question: "How often is customer data synced?",
     answer: "Data is synced automatically once per day. Segment assignments, health metrics, and movement tracking are all updated with each daily sync.",
   },
   {
-    question: "What’s included in the Free plan?",
+    question: "What's included in the Free plan?",
     answer: "The Free plan supports up to 50 customers and includes the health dashboard, all 8 customer segments, and cohort retention analysis.",
   },
   {
@@ -76,7 +76,7 @@ const faqs = [
   },
   {
     question: "Is my customer data safe?",
-    answer: "Your data is processed on Cloudflare’s secure global infrastructure. When you uninstall the app, all stored data is deleted. See our Privacy Policy for full details.",
+    answer: "Your data is processed on Cloudflare's secure global infrastructure. When you uninstall the app, all stored data is deleted. See our Privacy Policy for full details.",
   },
   {
     question: "Which Shopify plans are supported?",
@@ -94,7 +94,7 @@ const faqs = [
     <section class="rp-hero">
       <div class="container rp-hero-grid">
         <div class="rp-hero-body fade-in">
-          <h1 class="rp-hero-title">RetainPulse — Customer Segment Insights</h1>
+          <h1 class="rp-hero-title">Customer Segment Insights</h1>
           <p class="rp-hero-desc">
             Spot loyal, at-risk, and dormant customers with industry-adjusted RFM benchmarks.
             Know who to nurture, who to win back, and who's already gone.
@@ -120,6 +120,7 @@ const faqs = [
           <ProductCard
             title="Foxry Vault — CF7 Submission Storage"
             description="Never lose a Contact Form 7 submission again. Auto-save every entry to your database with GDPR-ready auto-deletion, CSV export, and a dashboard widget."
+            platform="wordpress"
             price="Free & open source"
             ctaText="View on WordPress.org →"
             ctaHref="https://wordpress.org/plugins/foxry-vault/"
@@ -127,6 +128,7 @@ const faqs = [
           <ProductCard
             title="StockClock — Stockout Predictor"
             description="Know when you'll run out of stock — before it happens. Predicts stockout dates from sales velocity and sends alerts via email and Slack."
+            platform="shopify"
             badge="Coming to Shopify App Store soon"
           />
         </div>
@@ -137,30 +139,55 @@ const faqs = [
 </Layout>
 
 <style>
-  .rp-hero { padding: clamp(3rem, 6vw, 5rem) 0; }
-  .rp-hero-grid { display: grid; gap: 2.5rem; }
+  .rp-hero {
+    padding: clamp(3rem, 7vw, 5.5rem) 0 clamp(2rem, 5vw, 4rem);
+  }
+
+  .rp-hero-grid {
+    display: grid;
+    gap: var(--space-2xl);
+  }
 
   @media (min-width: 768px) {
-    .rp-hero-grid { grid-template-columns: 5fr 7fr; align-items: center; }
+    .rp-hero-grid {
+      grid-template-columns: 5fr 7fr;
+      align-items: center;
+      gap: var(--space-3xl);
+    }
   }
 
   .rp-hero-title {
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
-    font-weight: 600;
-    line-height: 1.2;
-    letter-spacing: -0.02em;
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.5vw, 3rem);
+    font-weight: 800;
+    line-height: 1.1;
+    letter-spacing: -0.03em;
   }
 
-  .rp-hero-desc { margin-top: 1rem; color: var(--color-subtext); line-height: 1.7; }
-  .rp-hero-price { margin-top: 1.5rem; font-weight: 600; color: var(--color-accent); }
+  .rp-hero-desc {
+    margin-top: var(--space-lg);
+    color: var(--color-subtext);
+    line-height: 1.7;
+    font-size: clamp(1rem, 1.3vw, 1.0625rem);
+    max-width: 480px;
+  }
+
+  .rp-hero-price {
+    margin-top: var(--space-xl);
+    font-family: var(--font-display);
+    font-weight: 700;
+    color: var(--color-accent);
+    font-size: 0.9375rem;
+  }
 
   .rp-cta {
-    display: inline-block;
-    margin-top: 1rem;
-    padding: 0.75rem 1.5rem;
-    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--space-md);
+    padding: 0.875rem 1.75rem;
+    min-height: 48px;
     background: var(--color-accent);
-    color: var(--color-white);
+    color: var(--color-surface);
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9375rem;
@@ -168,30 +195,45 @@ const faqs = [
     cursor: pointer;
   }
 
-  .rp-cta:hover { background: var(--color-accent-hover); }
+  .rp-cta:hover {
+    background: var(--color-accent-hover);
+  }
 
-  .rp-hero-media { display: flex; justify-content: center; }
+  .rp-hero-media {
+    display: flex;
+    justify-content: center;
+  }
 
   .rp-app-icon {
     max-width: 280px;
     width: 100%;
     height: auto;
     border-radius: 22%;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 8px 24px rgba(31, 26, 20, 0.1);
   }
 
-  .other-apps { padding: var(--section-py) 0; }
+  .other-apps {
+    padding: var(--section-py) 0;
+  }
 
   .other-apps-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: var(--space-2xl);
   }
 
-  .other-apps-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  .other-apps-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--space-lg);
+  }
 
   @media (min-width: 640px) {
-    .other-apps-grid { grid-template-columns: 1fr 1fr; }
+    .other-apps-grid {
+      grid-template-columns: 1fr 1fr;
+    }
   }
 </style>

@@ -1,5 +1,5 @@
 <section class="about fade-in">
-  <div class="container">
+  <div class="container about-inner">
     <h2 class="about-title">About Foxry</h2>
     <p class="about-text">
       Foxry is a small, independent studio focused on building practical tools
@@ -13,19 +13,24 @@
 <style>
   .about {
     padding: var(--section-py) 0;
-    text-align: center;
+  }
+
+  .about-inner {
+    max-width: 640px;
   }
 
   .about-title {
-    font-size: clamp(1.5rem, 3vw, 2rem);
-    font-weight: 600;
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-lg);
   }
 
   .about-text {
-    margin-top: 1.25rem;
     color: var(--color-subtext);
-    max-width: 640px;
-    margin-inline: auto;
-    line-height: 1.8;
+    font-size: 1.0625rem;
+    line-height: 1.7;
+    max-width: 560px;
   }
 </style>

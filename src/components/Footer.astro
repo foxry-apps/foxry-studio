@@ -1,54 +1,84 @@
+---
+import logo from '../assets/images/foxry-logo.png';
+---
+
 <footer class="footer">
   <div class="container footer-inner">
-    <address class="contact">
-      <a href="mailto:foxry.support@gmail.com">foxry.support@gmail.com</a>
-    </address>
-    <nav class="footer-links" aria-label="Legal">
-      <a href="/privacy">Privacy Policy</a>
-      <a href="/terms">Terms of Service</a>
+    <a href="/" class="footer-logo-link" aria-label="Foxry Home">
+      <img src={logo.src} alt="Foxry" class="footer-logo" width={logo.width} height={logo.height} />
+    </a>
+    <nav class="footer-meta" aria-label="Footer">
+      <address class="contact">
+        <a href="mailto:foxry.support@gmail.com">foxry.support@gmail.com</a>
+      </address>
+      <nav class="footer-links" aria-label="Legal">
+        <a href="/privacy">Privacy Policy</a>
+        <a href="/terms">Terms of Service</a>
+      </nav>
+      <p class="copyright">&copy; 2026 Foxry</p>
     </nav>
-    <p class="copyright">&copy; 2026 Foxry</p>
   </div>
 </footer>
 
 <style>
   .footer {
-    padding: 2rem 0;
+    padding: var(--space-3xl) 0 var(--space-2xl);
     border-top: 1px solid var(--color-border);
-    font-size: 0.875rem;
-    color: var(--color-subtext);
   }
 
   .footer-inner {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    gap: 0.75rem;
-    text-align: center;
+    gap: var(--space-xl);
+  }
+
+  .footer-logo-link {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .footer-logo-link:hover {
+    opacity: 0.7;
+  }
+
+  .footer-logo {
+    height: 3.5rem;
+    width: auto;
+  }
+
+  .footer-meta {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    font-size: 0.875rem;
+    color: var(--color-muted);
   }
 
   address {
     font-style: normal;
   }
 
-  .contact a,
-  .footer-links a {
+  .footer-meta a {
     transition: color 0.2s ease;
     cursor: pointer;
   }
 
-  .contact a:hover,
-  .footer-links a:hover {
+  .footer-meta a:hover {
     color: var(--color-accent);
   }
 
   .footer-links {
     display: flex;
-    gap: 0.5rem;
+    gap: var(--space-sm);
   }
 
   .footer-links a + a::before {
     content: "·";
-    margin-right: 0.5rem;
+    margin-right: var(--space-sm);
+  }
+
+  .copyright {
+    color: var(--color-muted);
   }
 </style>

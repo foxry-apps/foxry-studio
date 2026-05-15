@@ -1,100 +1,264 @@
 ---
-import ProductCard from './ProductCard.astro';
-import featureImage from '../assets/images/01_feature_image.png';
+import csiIcon from '../assets/images/csi-app-icon.png';
+import stockclockIcon from '../assets/images/stockclock-icon.png';
+import stockclockDash from '../assets/images/stockclock-dashboard.png';
+import rpDash from '../assets/images/retainpulse-ss-1.png';
+import BrowserFrame from './BrowserFrame.astro';
 ---
 
 <section class="products">
   <div class="container">
-    <article class="featured fade-in">
-      <div class="featured-body">
-        <h3 class="featured-title">RetainPulse — Customer Segment Insights</h3>
-        <p class="featured-desc">
+    <h2 class="section-heading fade-in">Our Apps</h2>
+
+    <article class="app-showcase fade-in">
+      <div class="app-showcase-body">
+        <div class="app-header">
+          <img src={csiIcon.src} alt="" width="56" height="56" class="app-icon" />
+          <div>
+            <h3 class="app-name">RetainPulse</h3>
+            <p class="app-tagline">Customer Segment Insights</p>
+          </div>
+        </div>
+        <p class="app-desc">
           Spot loyal, at-risk, and dormant customers with industry-adjusted RFM benchmarks.
+          Eight clear segments, zero guesswork.
         </p>
-        <a href="/retainpulse" class="featured-cta">Learn more →</a>
+        <ul class="app-highlights">
+          <li>8 auto-classified customer segments</li>
+          <li>Health dashboard with key metrics</li>
+          <li>Cohort retention analysis</li>
+          <li>Free plan available — Pro at $29/mo</li>
+        </ul>
+        <div class="app-actions">
+          <a href="/retainpulse" class="app-cta app-cta--primary">Learn More</a>
+          <a href="https://apps.shopify.com/retainpulse" class="app-cta app-cta--ghost" target="_blank" rel="noopener noreferrer">
+            View on Shopify App Store
+          </a>
+        </div>
       </div>
-      <div class="featured-media">
-        <img
-          src={featureImage.src}
-          alt="RetainPulse dashboard"
-          width={featureImage.width}
-          height={featureImage.height}
-          loading="lazy"
-          class="featured-img"
-        />
+      <div class="app-showcase-media">
+        <BrowserFrame>
+          <img src={rpDash.src} alt="RetainPulse dashboard" width={rpDash.width} height={rpDash.height} loading="lazy" />
+        </BrowserFrame>
       </div>
     </article>
-    <div class="product-grid fade-in">
-      <ProductCard
-        title="Foxry Vault — CF7 Submission Storage"
-        description="Never lose a Contact Form 7 submission again. Auto-save every entry to your database with GDPR-ready auto-deletion, CSV export, and a dashboard widget."
-        price="Free & open source"
-        ctaText="View on WordPress.org →"
-        ctaHref="https://wordpress.org/plugins/foxry-vault/"
-      />
-      <ProductCard
-        title="StockClock — Stockout Predictor"
-        description="Know when you'll run out of stock — before it happens. Predicts stockout dates from sales velocity and sends alerts via email and Slack."
-        badge="Coming to Shopify App Store soon"
-      />
-    </div>
+
+    <article class="app-showcase app-showcase--reversed fade-in" id="stockclock">
+      <div class="app-showcase-body">
+        <div class="app-header">
+          <img src={stockclockIcon.src} alt="" width="56" height="56" class="app-icon" />
+          <div>
+            <h3 class="app-name">StockClock</h3>
+            <p class="app-tagline">Stockout Predictor</p>
+          </div>
+        </div>
+        <p class="app-desc">
+          Know when you'll run out of stock — before it happens.
+          StockClock predicts stockout dates from your sales velocity and tells you exactly when and how much to reorder.
+        </p>
+        <div class="pricing-callout">
+          <span class="pricing-amount">$7.99<span class="pricing-period">/mo</span></span>
+          <span class="pricing-compare">Features that others charge $49 for</span>
+        </div>
+        <ul class="app-highlights">
+          <li>Demand forecasting with seasonal detection</li>
+          <li>Recommended reorder dates and quantities</li>
+          <li>PO management with PDF/CSV export</li>
+          <li>Low-stock alerts via email and Slack</li>
+        </ul>
+        <span class="coming-soon-tag">Coming to Shopify App Store soon</span>
+      </div>
+      <div class="app-showcase-media">
+        <BrowserFrame>
+          <img src={stockclockDash.src} alt="StockClock inventory dashboard" width={stockclockDash.width} height={stockclockDash.height} loading="lazy" />
+        </BrowserFrame>
+      </div>
+    </article>
   </div>
 </section>
 
 <style>
-  .products { padding-bottom: var(--section-py); }
-
-  .featured {
-    background: var(--color-white);
-    border-radius: 12px;
-    padding: 2rem;
-    display: grid;
-    gap: 2rem;
-    margin-bottom: 1.5rem;
-    transition: box-shadow 0.3s ease, transform 0.3s ease;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  .products {
+    padding: var(--section-py) 0;
   }
 
-  .featured:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
+  .section-heading {
+    font-family: var(--font-display);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-2xl);
+  }
+
+  .app-showcase {
+    display: grid;
+    gap: var(--space-2xl);
+    align-items: center;
+    padding: var(--space-2xl);
+    background: var(--color-surface);
+    border-radius: 16px;
+    margin-bottom: var(--space-xl);
+  }
+
+  .app-showcase:last-child {
+    margin-bottom: 0;
   }
 
   @media (min-width: 768px) {
-    .featured { grid-template-columns: 5fr 7fr; align-items: center; }
+    .app-showcase {
+      grid-template-columns: 5fr 7fr;
+      padding: var(--space-2xl) var(--space-3xl);
+    }
+
+    .app-showcase--reversed {
+      grid-template-columns: 7fr 5fr;
+    }
+
+    .app-showcase--reversed .app-showcase-body {
+      order: 2;
+    }
   }
 
-  .featured-title {
-    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
-    font-weight: 600;
-    line-height: 1.3;
+  .app-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
   }
 
-  .featured-desc {
-    margin-top: 0.75rem;
+  .app-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+  }
+
+  .app-name {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.2;
+  }
+
+  .app-tagline {
+    font-size: 0.875rem;
+    color: var(--color-subtext);
+    margin-top: 2px;
+  }
+
+  .app-desc {
     color: var(--color-subtext);
     line-height: 1.7;
+    font-size: 0.9375rem;
+    max-width: 520px;
   }
 
-  .featured-cta {
-    display: inline-block;
-    margin-top: 1.25rem;
+  .pricing-callout {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-md);
+    margin-top: var(--space-lg);
+    padding: var(--space-md) var(--space-lg);
+    background: var(--color-highlight);
+    border-radius: 8px;
+    flex-wrap: wrap;
+  }
+
+  .pricing-amount {
+    font-family: var(--font-display);
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--color-text);
+    letter-spacing: -0.02em;
+  }
+
+  .pricing-period {
+    font-size: 0.9375rem;
+    font-weight: 500;
+    color: var(--color-subtext);
+  }
+
+  .pricing-compare {
+    font-size: 0.875rem;
+    color: var(--color-subtext);
+  }
+
+  .app-highlights {
+    margin-top: var(--space-lg);
+    padding-left: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+  }
+
+  .app-highlights li {
+    font-size: 0.9375rem;
+    color: var(--color-subtext);
+    padding-left: 1.5rem;
+    position: relative;
+    line-height: 1.5;
+  }
+
+  .app-highlights li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5em;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--color-accent);
+    opacity: 0.6;
+  }
+
+  .app-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-top: var(--space-xl);
+  }
+
+  .app-cta {
+    display: inline-flex;
+    align-items: center;
     padding: 0.75rem 1.5rem;
     min-height: 44px;
-    background: var(--color-accent);
-    color: var(--color-white);
     border-radius: 8px;
     font-weight: 600;
     font-size: 0.9375rem;
-    transition: background 0.2s ease;
+    transition: all 0.2s ease;
     cursor: pointer;
+    white-space: nowrap;
   }
 
-  .featured-cta:hover { background: var(--color-accent-hover); }
+  .app-cta--primary {
+    background: var(--color-accent);
+    color: var(--color-surface);
+  }
 
-  .product-grid { display: grid; grid-template-columns: 1fr; gap: 1.5rem; }
+  .app-cta--primary:hover {
+    background: var(--color-accent-hover);
+  }
 
-  @media (min-width: 640px) {
-    .product-grid { grid-template-columns: 1fr 1fr; }
+  .app-cta--ghost {
+    color: var(--color-subtext);
+    border: 1.5px solid var(--color-border);
+  }
+
+  .app-cta--ghost:hover {
+    color: var(--color-text);
+    border-color: var(--color-subtext);
+  }
+
+  .coming-soon-tag {
+    display: inline-block;
+    margin-top: var(--space-xl);
+    padding: 0.5rem 1rem;
+    background: var(--color-highlight);
+    color: var(--color-accent);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.875rem;
   }
 </style>

@@ -1,0 +1,116 @@
+---
+interface Props {
+  items: { question: string; answer: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<section class="faq fade-in">
+  <div class="container">
+    <h2 class="faq-title">Frequently Asked Questions</h2>
+    <dl class="faq-list">
+      {items.map((item) => (
+        <div class="faq-item">
+          <dt>
+            <button type="button" class="faq-trigger" aria-expanded="false">
+              <span>{item.question}</span>
+              <svg class="faq-icon" width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+                <path d="M10 4v12M4 10h12" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+              </svg>
+            </button>
+          </dt>
+          <dd class="faq-answer">
+            <p>{item.answer}</p>
+          </dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .faq { padding: var(--section-py) 0; }
+
+  .faq-title {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 2.5rem;
+  }
+
+  .faq-list {
+    max-width: 720px;
+    margin-inline: auto;
+  }
+
+  .faq-item {
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .faq-item:first-child {
+    border-top: 1px solid var(--color-border);
+  }
+
+  .faq-trigger {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    width: 100%;
+    padding: 1.25rem 0;
+    min-height: 44px;
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text);
+    text-align: left;
+    cursor: pointer;
+    transition: color 0.2s ease;
+  }
+
+  .faq-trigger:hover { color: var(--color-accent); }
+
+  .faq-icon {
+    flex-shrink: 0;
+    color: var(--color-subtext);
+    transition: transform 0.3s ease;
+  }
+
+  .faq-trigger[aria-expanded="true"] .faq-icon {
+    transform: rotate(45deg);
+  }
+
+  .faq-answer {
+    overflow: hidden;
+    max-height: 0;
+    transition: max-height 0.3s ease, padding 0.3s ease;
+  }
+
+  .faq-answer p {
+    padding-bottom: 1.25rem;
+    color: var(--color-subtext);
+    line-height: 1.7;
+    font-size: 0.9375rem;
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('.faq-trigger').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const expanded = btn.getAttribute('aria-expanded') === 'true';
+      const answer = btn.closest('.faq-item')?.querySelector<HTMLElement>('.faq-answer');
+      if (!answer) return;
+
+      btn.setAttribute('aria-expanded', String(!expanded));
+
+      if (expanded) {
+        answer.style.maxHeight = '0';
+      } else {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+</script>

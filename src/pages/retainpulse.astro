@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Header from '../components/Header.astro';
 import FeatureBlock from '../components/FeatureBlock.astro';
 import PricingSection from '../components/PricingSection.astro';
+import FaqSection from '../components/FaqSection.astro';
 import CtaBanner from '../components/CtaBanner.astro';
 import ProductCard from '../components/ProductCard.astro';
 import Footer from '../components/Footer.astro';
@@ -47,6 +48,41 @@ const features = [
     description: "Choose your store type for industry-adjusted benchmarks, enable email and Slack notifications, and you're done. No complex configuration, no onboarding calls.",
   },
 ];
+
+const faqs = [
+  {
+    question: "What is RFM analysis?",
+    answer: "RFM stands for Recency, Frequency, and Monetary value — three dimensions that score customers based on when they last purchased, how often they buy, and how much they spend. RetainPulse uses RFM scoring with industry-adjusted benchmarks to automatically classify your customers into 8 actionable segments.",
+  },
+  {
+    question: "How are the 8 customer segments defined?",
+    answer: "Segments are automatically assigned based on each customer’s RFM score. The thresholds adapt to your store type — a furniture store and a consumables store have very different buying cycles, and RetainPulse accounts for that.",
+  },
+  {
+    question: 'What does "industry-adjusted" mean?',
+    answer: "Different industries have different purchase patterns. A customer who buys once a year might be loyal for a furniture store but dormant for a grocery store. When you select your Store Type, RetainPulse applies benchmarks calibrated to your industry’s typical buying cycle.",
+  },
+  {
+    question: "How often is customer data synced?",
+    answer: "Data is synced automatically once per day. Segment assignments, health metrics, and movement tracking are all updated with each daily sync.",
+  },
+  {
+    question: "What’s included in the Free plan?",
+    answer: "The Free plan supports up to 50 customers and includes the health dashboard, all 8 customer segments, and cohort retention analysis.",
+  },
+  {
+    question: "Can I export customer data?",
+    answer: "Yes — on the Pro plan, you can filter customers by segment and export the list as a CSV file.",
+  },
+  {
+    question: "Is my customer data safe?",
+    answer: "Your data is processed on Cloudflare’s secure global infrastructure. When you uninstall the app, all stored data is deleted. See our Privacy Policy for full details.",
+  },
+  {
+    question: "Which Shopify plans are supported?",
+    answer: "RetainPulse works with all Shopify plans — Basic, Shopify, Advanced, and Plus.",
+  },
+];
 ---
 
 <Layout
@@ -75,6 +111,7 @@ const features = [
     </section>
     {features.map((f) => <FeatureBlock image={f.image} title={f.title} description={f.description} reverse={f.reverse} />)}
     <PricingSection />
+    <FaqSection items={faqs} />
     <CtaBanner />
     <section class="other-apps fade-in">
       <div class="container">

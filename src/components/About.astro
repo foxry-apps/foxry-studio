@@ -1,12 +1,36 @@
+---
+import foxryIcon from '../assets/images/foxry-icon.png';
+---
+
 <section class="about fade-in">
-  <div class="container about-inner">
-    <h2 class="about-title">About Foxry</h2>
-    <p class="about-text">
-      Foxry is a small, independent studio focused on building practical tools
-      for online merchants. We believe store owners shouldn't have to choose
-      between powerful features and reasonable pricing. Every app we ship is
-      built to solve a real problem — cleanly, affordably, and without bloat.
-    </p>
+  <div class="container">
+    <article class="about-card">
+      <div class="about-icon-wrap">
+        <img
+          src={foxryIcon.src}
+          alt="Foxry"
+          width="256"
+          height="256"
+          class="about-icon"
+        />
+      </div>
+      <div class="about-body">
+        <h2 class="about-title">About Foxry</h2>
+        <p class="about-text">
+          Foxry is a small, independent studio focused on building practical tools
+          for online merchants. We believe store owners shouldn't have to choose
+          between powerful features and reasonable pricing.
+        </p>
+        <p class="about-text">
+          Every app we ship is built to solve a real problem — cleanly, affordably,
+          and without bloat. No venture capital, no growth hacks. Just honest tools
+          from a team that cares about getting it right.
+        </p>
+        <address class="about-contact">
+          <a href="mailto:foxry.support@gmail.com">foxry.support@gmail.com</a>
+        </address>
+      </div>
+    </article>
   </div>
 </section>
 
@@ -15,22 +39,87 @@
     padding: var(--section-py) 0;
   }
 
-  .about-inner {
-    max-width: 640px;
+  .about-card {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: var(--space-2xl) var(--space-lg);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-xl);
+    text-align: center;
+  }
+
+  @media (min-width: 480px) {
+    .about-card {
+      padding: var(--space-2xl);
+    }
+  }
+
+  @media (min-width: 768px) {
+    .about-card {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: var(--space-2xl);
+      padding: var(--space-2xl) var(--space-3xl);
+      text-align: left;
+    }
+  }
+
+  .about-icon-wrap {
+    flex-shrink: 0;
+  }
+
+  .about-icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 22%;
+    box-shadow: 0 6px 20px rgba(232, 96, 28, 0.15);
+  }
+
+  @media (min-width: 768px) {
+    .about-icon {
+      width: 120px;
+      height: 120px;
+    }
+  }
+
+  .about-body {
+    max-width: 540px;
   }
 
   .about-title {
     font-family: var(--font-display);
-    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-md);
   }
 
   .about-text {
     color: var(--color-subtext);
-    font-size: 1.0625rem;
+    font-size: 0.9375rem;
     line-height: 1.7;
-    max-width: 560px;
+  }
+
+  .about-text + .about-text {
+    margin-top: var(--space-sm);
+  }
+
+  .about-contact {
+    margin-top: var(--space-lg);
+    font-style: normal;
+  }
+
+  .about-contact a {
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-accent);
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .about-contact a:hover {
+    opacity: 0.7;
   }
 </style>

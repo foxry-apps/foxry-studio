@@ -92,9 +92,9 @@ import BrowserFrame from './BrowserFrame.astro';
 
   .app-showcase {
     display: grid;
-    gap: var(--space-2xl);
+    gap: var(--space-xl);
     align-items: center;
-    padding: var(--space-2xl);
+    padding: var(--space-lg);
     background: var(--color-surface);
     border-radius: 16px;
     margin-bottom: var(--space-xl);
@@ -104,9 +104,16 @@ import BrowserFrame from './BrowserFrame.astro';
     margin-bottom: 0;
   }
 
+  @media (min-width: 480px) {
+    .app-showcase {
+      padding: var(--space-2xl);
+    }
+  }
+
   @media (min-width: 768px) {
     .app-showcase {
       grid-template-columns: 5fr 7fr;
+      gap: var(--space-2xl);
       padding: var(--space-2xl) var(--space-3xl);
     }
 
@@ -127,9 +134,17 @@ import BrowserFrame from './BrowserFrame.astro';
   }
 
   .app-icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+  }
+
+  @media (min-width: 480px) {
+    .app-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 14px;
+    }
   }
 
   .app-name {
@@ -214,14 +229,22 @@ import BrowserFrame from './BrowserFrame.astro';
 
   .app-actions {
     display: flex;
-    flex-wrap: wrap;
-    gap: var(--space-md);
+    flex-direction: column;
+    gap: var(--space-sm);
     margin-top: var(--space-xl);
+  }
+
+  @media (min-width: 480px) {
+    .app-actions {
+      flex-direction: row;
+      gap: var(--space-md);
+    }
   }
 
   .app-cta {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
     padding: 0.75rem 1.5rem;
     min-height: 44px;
     border-radius: 8px;

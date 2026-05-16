@@ -2,29 +2,68 @@
 import ProductCard from './ProductCard.astro';
 ---
 
-<section class="trust">
+<section class="why">
   <div class="container">
-    <h2 class="trust-heading fade-in">Why merchants choose Foxry</h2>
-    <div class="trust-grid fade-in">
-      <article class="trust-item">
-        <h3 class="trust-title">Fair pricing, full features</h3>
-        <p class="trust-desc">
-          We don't gate essential features behind expensive plans.
-          You get what you need without paying enterprise prices.
+    <h2 class="why-heading fade-in">Why merchants choose Foxry</h2>
+    <p class="why-lead fade-in">
+      We're a small, independent studio — no VC funding, no growth-at-all-costs pressure.
+      That means we can focus on what actually matters: building good software and pricing it honestly.
+    </p>
+
+    <div class="why-cards fade-in">
+      <article class="why-main">
+        <div class="why-main-text">
+          <h3 class="why-main-title">Fair pricing, full features</h3>
+          <p class="why-main-desc">
+            We don't gate essential features behind enterprise plans.
+            Our free tiers are genuinely useful, and our paid plans cost
+            a fraction of what you'd pay elsewhere.
+          </p>
+        </div>
+        <ul class="proof-list">
+          <li class="proof-item">
+            <span class="proof-head">
+              <span class="proof-name">RetainPulse Pro</span>
+              <span class="proof-price">$29<span class="proof-unit">/mo</span></span>
+            </span>
+            <span class="proof-compare">Similar apps charge $49–99</span>
+          </li>
+          <li class="proof-item">
+            <span class="proof-head">
+              <span class="proof-name">StockClock Pro</span>
+              <span class="proof-price">$7.99<span class="proof-unit">/mo</span></span>
+            </span>
+            <span class="proof-compare">Competitors charge $29–49</span>
+          </li>
+          <li class="proof-item proof-item--free">
+            <span class="proof-head">
+              <span class="proof-name">Foxry Vault</span>
+              <span class="proof-price">Free</span>
+            </span>
+            <span class="proof-compare">Open source, forever</span>
+          </li>
+        </ul>
+      </article>
+
+      <article class="why-card">
+        <span class="why-card-accent" aria-hidden="true">01</span>
+        <h3 class="why-card-title">Focused, not bloated</h3>
+        <p class="why-card-desc">
+          Each app solves one specific problem and does it well.
+          No feature bloat that slows your store down, no unnecessary complexity,
+          no upsells you didn't ask for. Install, configure in minutes,
+          and get back to running your business.
         </p>
       </article>
-      <article class="trust-item">
-        <h3 class="trust-title">One app, one job</h3>
-        <p class="trust-desc">
-          Every app solves a specific problem well.
-          No feature bloat, no unnecessary complexity.
-        </p>
-      </article>
-      <article class="trust-item">
-        <h3 class="trust-title">Built on modern infrastructure</h3>
-        <p class="trust-desc">
-          Serverless architecture on Cloudflare means fast performance,
-          reliable uptime, and your data stays secure.
+
+      <article class="why-card">
+        <span class="why-card-accent" aria-hidden="true">02</span>
+        <h3 class="why-card-title">Built to stay up</h3>
+        <p class="why-card-desc">
+          Serverless infrastructure on Cloudflare's global edge network.
+          Your data is processed close to your customers, and the architecture
+          scales without you thinking about it.
+          When you uninstall, your data is deleted — no exceptions.
         </p>
       </article>
     </div>
@@ -44,34 +83,171 @@ import ProductCard from './ProductCard.astro';
 </section>
 
 <style>
-  .trust {
+  .why {
     padding: var(--section-py) 0;
   }
 
-  .trust-heading {
+  .why-heading {
     font-family: var(--font-display);
     font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 700;
     letter-spacing: -0.02em;
-    margin-bottom: var(--space-2xl);
   }
 
-  .trust-grid {
+  .why-lead {
+    margin-top: var(--space-md);
+    color: var(--color-subtext);
+    font-size: clamp(1rem, 1.3vw, 1.0625rem);
+    line-height: 1.7;
+    max-width: 580px;
+  }
+
+  /* ---- Card grid ---- */
+  .why-cards {
+    display: grid;
+    gap: var(--space-lg);
+    margin-top: var(--space-2xl);
+  }
+
+  @media (min-width: 640px) {
+    .why-cards {
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .why-main {
+      grid-column: 1 / -1;
+    }
+  }
+
+  /* ---- Featured pricing card ---- */
+  .why-main {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: var(--space-lg);
     display: grid;
     gap: var(--space-xl);
   }
 
-  @media (min-width: 640px) {
-    .trust-grid {
-      grid-template-columns: repeat(3, 1fr);
+  @media (min-width: 480px) {
+    .why-main {
+      padding: var(--space-2xl);
     }
   }
 
-  .trust-item {
-    padding: var(--space-lg) 0;
+  @media (min-width: 768px) {
+    .why-main {
+      grid-template-columns: 5fr 7fr;
+      gap: var(--space-3xl);
+      padding: var(--space-2xl) var(--space-3xl);
+    }
   }
 
-  .trust-title {
+  .why-main-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    font-weight: 700;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+
+  .why-main-desc {
+    margin-top: var(--space-md);
+    color: var(--color-subtext);
+    font-size: 0.9375rem;
+    line-height: 1.7;
+  }
+
+  /* ---- Proof list ---- */
+  .proof-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .proof-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: var(--space-md) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .proof-item:first-child {
+    padding-top: 0;
+  }
+
+  .proof-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .proof-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: var(--space-md);
+  }
+
+  .proof-name {
+    font-weight: 600;
+    font-size: 0.9375rem;
+    color: var(--color-text);
+  }
+
+  .proof-price {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.25rem;
+    color: var(--color-accent);
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+  }
+
+  .proof-unit {
+    font-size: 0.8125rem;
+    font-weight: 500;
+    color: var(--color-subtext);
+  }
+
+  .proof-compare {
+    font-size: 0.8125rem;
+    color: var(--color-muted);
+    line-height: 1.5;
+  }
+
+  .proof-item--free .proof-price {
+    color: #6e8e2e;
+  }
+
+  /* ---- Secondary value cards ---- */
+  .why-card {
+    background: var(--color-surface);
+    border-radius: 12px;
+    padding: var(--space-lg);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (min-width: 480px) {
+    .why-card {
+      padding: var(--space-2xl);
+    }
+  }
+
+  .why-card-accent {
+    display: block;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 5vw, 4rem);
+    font-weight: 800;
+    color: var(--color-accent);
+    opacity: 0.1;
+    line-height: 1;
+    letter-spacing: -0.04em;
+    margin-bottom: var(--space-md);
+  }
+
+  .why-card-title {
     font-family: var(--font-display);
     font-size: 1.125rem;
     font-weight: 700;
@@ -79,13 +255,13 @@ import ProductCard from './ProductCard.astro';
     margin-bottom: var(--space-sm);
   }
 
-  .trust-desc {
+  .why-card-desc {
     color: var(--color-subtext);
     font-size: 0.9375rem;
     line-height: 1.7;
-    max-width: 340px;
   }
 
+  /* ---- Also section ---- */
   .also {
     margin-top: var(--section-py);
   }

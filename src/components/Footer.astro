@@ -15,6 +15,9 @@ import logo from '../assets/images/foxry-logo.png';
         <a href="/privacy">Privacy Policy</a>
         <a href="/terms">Terms of Service</a>
       </nav>
+      <a href="https://thesaasdir.com/product/retainpulse?ref=badge" rel="dofollow" class="badge-link">
+        <img src="https://thesaasdir.com/badge/retainpulse.svg" alt="Featured on TheSaaSDir" width="160" height="44" />
+      </a>
       <p class="copyright">&copy; 2026 Foxry</p>
     </nav>
   </div>
@@ -92,6 +95,16 @@ import logo from '../assets/images/foxry-logo.png';
   .footer-links a + a::before {
     content: "·";
     margin-right: var(--space-sm);
+  }
+
+  .badge-link {
+    display: inline-block;
+    transition: opacity 0.2s ease;
+    cursor: pointer;
+  }
+
+  .badge-link:hover {
+    opacity: 0.7;
   }
 
   .copyright {
